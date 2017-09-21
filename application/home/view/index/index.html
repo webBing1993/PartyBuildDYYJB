@@ -34,58 +34,38 @@
                         <span>云上组织</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{:Url('Pioneer/index?c=1')}">
-                        <img src="/home/images/index/star.png" alt="先锋引领">
-                        <span>先锋引领</span>
-                    </a>
-                </li>
+                <!--<li>-->
+                    <!--<a href="{:Url('Pioneer/index?c=1')}">-->
+                        <!--<img src="/home/images/index/star.png" alt="先锋引领">-->
+                        <!--<span>先锋引领</span>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li>
                     <a href="{:Url('Learn/index?c=1')}">
                         <img src="/home/images/index/learn.png" alt="每日一课">
                         <span>两学一做</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{:Url('College/index')}">
-                        <img src="/home/images/index/announcement.png" alt="鸡毛传帖">
-                        <span>鸡毛传帖</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{:Url('Activity/index?c=1')}">
-                        <img src="/home/images/index/active.png" alt="活动发起">
-                        <span>活动发起</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{:Url('Feedback/index')}">
-                        <img src="/home/images/index/news.png" alt="红色足迹">
-                        <span>红色足迹</span>
-                    </a>
-                </li>
+                <!--<li>-->
+                    <!--<a href="{:Url('College/index')}">-->
+                        <!--<img src="/home/images/index/announcement.png" alt="鸡毛传帖">-->
+                        <!--<span>鸡毛传帖</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="{:Url('Activity/index?c=1')}">-->
+                        <!--<img src="/home/images/index/active.png" alt="活动发起">-->
+                        <!--<span>活动发起</span>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="{:Url('Feedback/index')}">-->
+                        <!--<img src="/home/images/index/news.png" alt="红色足迹">-->
+                        <!--<span>红色足迹</span>-->
+                    <!--</a>-->
+                <!--</li>-->
             </ul>
         </div>
-        {notempty name="test"}
-        <div class="swiper-slide">
-            <ul class="model">
-                <li>
-                    <a href="{:Url('Live/face')}">
-                        <img src="/home/images/index/live.jpg" alt="人脸识别">
-                        <span>人脸识别</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{:Url('Live/index')}">
-                        <img src="/home/images/index/face.jpg" alt="观看直播">
-                        <span>观看直播</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="swiper-pagination"></div>
-    {/notempty}
 </div>
 
 <!--分割线-->
@@ -94,47 +74,7 @@
 <div class="content">
     <div class="notices">
         <div class="notice party">
-            {volist name="list2" id="loo"}
-            <a href="
-            {switch name='$loo.class'}
-            {case value='1'}{:Url('Details/index?id='.$loo['id'])}{/case}
-            {case value='2'}
-                {eq name='$loo.type' value='1'}
-                {:Url('Learn/video?id='.$loo['id'])}
-                {else/}
-                {:Url('Learn/article?id='.$loo['id'])}
-                {/eq}
-            {/case}
-            {case value='3'}
-                {:Url('College/forumnotice?id='.$loo['id'])}
-            {/case}
-             {case value='4'}
-                {:Url('Pioneer/detail?id='.$loo['id'])}
-            {/case}
-            {default/}
-            {/switch}"
-               class="list clear" data-type="{$loo.class}">
-                <div class="fl">
-                    <img src="{$loo.front_cover|get_cover='path'}" alt="图片">
-                    <span class="type">
-                    {switch name='$loo.class'}
-                    {case value='1'}红色足迹{/case}
-                    {case value='2'}两学一做{/case}
-                    {case value='3'}鸡毛传贴{/case}
-                    {case value='4'}先锋事迹{/case}
-                    {default/}
-                    {/switch}
-                   </span>
-                </div>
-                <div class="fr right">
-                    <div class="title limit_">{$loo.title}</div>
-                    <div class="clear time">
-                        <span class="fl">{$loo.publisher|subtext=9}</span>
-                        <span class="fr">{$loo.create_time|time_format='Y-m-d'}</span>
-                    </div>
-                </div>
-            </a>
-            {/volist}
+
         </div>
     </div>
 </div>
@@ -160,7 +100,6 @@
         if(len >= 6){
             $('.tip' ).text('上拉加载更多');
         }
-        loadScroll();
         $(".banner>.exit").on("click",function(){
             swal({
                         title:"",

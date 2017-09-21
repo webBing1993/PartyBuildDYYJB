@@ -49,6 +49,10 @@ class Admin extends Controller {
         }
         Config::set($config); //添加配置
 
+        // 配置参数显示
+        $Think['config'] = $config;
+        $this->assign('Think',$Think);
+
         /* 是否是超级管理员 */
         define('IS_ROOT', is_administrator());
         if(!IS_ROOT && Config::get('admin_allow_ip')){

@@ -140,8 +140,6 @@ class Base extends Controller {
      * 1 news
      * 2 feedback
      * 3 learn
-     * 4 notice
-     * 5 pioneer
      */
     public function like(){
         $uid = session('userId'); //点赞人
@@ -160,12 +158,6 @@ class Base extends Controller {
             case 3:
                 $table = "learn";
                 break;
-            case 4:
-                $table = "notice";
-                break;
-            case 5:
-                $table = "pioneer";
-                break;
             default:
                 return $this->error("无该数据表");
                 break;
@@ -179,12 +171,12 @@ class Base extends Controller {
         $likeModel = new Like();
         $like = $likeModel->where($data)->find();
         if(empty($like)) {  //点赞
-            if ($this->score_up()){
+            if (true){
                 // 未满 15 分
                 $res = $likeModel->create($data);
                 if($res) {
                     //点赞成功积分+1
-                    WechatUser::where('userid',$uid)->setInc('score',1);
+//                    WechatUser::where('userid',$uid)->setInc('score',1);
                     //更新数据
                     Db::name($table)->where('id',$aid)->setInc('likes');
                     return $this->success("点赞成功");
@@ -210,12 +202,12 @@ class Base extends Controller {
                 }
             }
         }else { //取消
-            if ($this->score_up()){
+            if (true){
                 //  未满 15分
                 $result = $likeModel::where($data)->delete();
                 if($result) {
                     //取消成功积分-1
-                    WechatUser::where('userid',$uid)->setDec('score',1);
+//                    WechatUser::where('userid',$uid)->setDec('score',1);
                     Db::name($table)->where('id',$aid)->setDec('likes');
                     return $this->success("取消成功");
                 }else {
@@ -269,9 +261,6 @@ class Base extends Controller {
      * 1 news
      * 2 feedback
      * 3 learn
-     * 4 notice
-     * 5 pioneer
-     * 6 wish
      */
     public function comment(){
         if(IS_POST){
@@ -288,15 +277,6 @@ class Base extends Controller {
                 case 3:
                     $table = "learn";
                     break;
-                case 4:
-                    $table = "notice";
-                    break;
-                case 5:
-                    $table = "pioneer";
-                    break;
-                case 6:
-                    $table = "wish";
-                    break;
                 default:
                     return $this->error("无该数据表");
                     break;
@@ -309,12 +289,12 @@ class Base extends Controller {
                 'uid' => $uid,
                 'table' => $table,
             );
-            if ($this->score_up()){
+            if (true){
                 // 未满 15分
                 $res = $commentModel->create($data);
                 if($res) {  //返回comment数组
                     //评论成功增加1分
-                    WechatUser::where('userid',$uid)->setInc('score',1);
+//                    WechatUser::where('userid',$uid)->setInc('score',1);
                     //更新主表数据
                     $map['id'] = $res['aid'];   //文章id
                     $model = Db::name($table)->where($map)->setInc('comments');
