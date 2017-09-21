@@ -21,7 +21,8 @@
   font-weight: 600;
 }
 .title span {
-  width: 100%;
+  width: auto;
+  display: inline-block;
   text-align: left;
 }
 .note{

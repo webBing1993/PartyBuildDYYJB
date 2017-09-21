@@ -39,6 +39,12 @@
   font-weight: 600;
   margin-top: 4vw;
   margin-bottom: 2.6666vw;
+  text-align: center;
+}
+.content .top .title p {
+  display: inline-block;
+  width: auto;
+  text-align: left;
 }
 .content .top .note span {
   height: 10.6666vw;
