@@ -168,10 +168,10 @@ body {
   line-height: 5.8vw;
 }
 .listbox .box.shouldKnow .box_:before {
-  content: '本月微党课';
+  content: 'VR展示';
 }
   .listbox .box.summary .box_:before {
-    content: '组织简介';
+    content: '党群服务中心';
   }
   .listbox .box.town .box_:before {
     content: '组织架构';

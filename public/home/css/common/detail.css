@@ -95,6 +95,7 @@
   font-weight: 600;
 }
 .article .title p{
+  width: auto;
   display: inline-block;
   text-align: left;
 }
@@ -209,6 +210,7 @@
   overflow: hidden;
   -webkit-border-radius: 50%;
   border-radius: 50%;
+  display: inline-block;
 }
 .comment .lists .list .mid {
   width: 73%;
