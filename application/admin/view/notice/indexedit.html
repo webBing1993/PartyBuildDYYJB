@@ -41,10 +41,11 @@
 {block name="page-header"}
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>通知公告</h2>
+        <h2>{if condition="$msg.type eq 1"}上级政策{elseif condition="$msg.type eq 4"/}活动招募{else/}志愿发布{/if}管理</h2>
         <ol class="breadcrumb">
             <li>
-                <a href="{:Url('Notice/index')}">相关通知</a>
+                {if condition="$msg.type eq 1"}<a href="{:Url('Notice/index')}">上级政策</a>{elseif condition="$msg.type eq 4"/}
+                <a href="{:Url('Notice/recruit')}"></a>活动招募{else/}<a href="{:Url('Notice/volunteer')}">志愿发布</a>{/if}
             </li>
             <li class="active">
                 <strong>编辑</strong>
@@ -72,7 +73,21 @@
                     <form id="form" class="form-horizontal" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <div class="col-lg-1 text-right control-label">
-                                <label>顶部Banner:</label>
+                                <label>类型:</label>
+                            </div>
+                            <div class="col-lg-11">
+                                <select class="form-control" name="type" disabled>
+                                    {if condition="$msg.type eq 1"}
+                                    <option value="1">上级政策</option>
+                                    {else/}
+                                    <option value="4">活动通知</option>
+                                    {/if}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-1 text-right control-label">
+                                <label>封面图片:</label>
                             </div>
                             <div class="col-lg-5" >
                                 <div class="imggroup">
@@ -84,76 +99,88 @@
                             </div>
                             <div class="clear"></div>
                         </div>
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-lg-1 text-right control-label">-->
+                                <!--<label>轮播图片:</label>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-3">-->
+                                <!--<div class="imggroup imgfileGroup">-->
+                                    <!--<img src="{$msg.carousel_images1|get_cover='path'}" alt='图片' class='thumbnail imgbox'>-->
+                                    <!--<input type="file" class="imgfile" accept="image/png , image/jpg ,image/jpeg ,image/gif">-->
+                                    <!--<input type="hidden" name="carousel_images1" class="img"  value="{$msg.carousel_images1||default=''}" required="">-->
+                                <!--</div>-->
+                                <!--<b>推荐尺寸：700*360px</b>-->
+                            <!--</div>-->
+                            <!--{eq name="$msg.carousel_images2" value=""}-->
+                            <!--<div class="col-lg-3">-->
+                                <!--<div class="plus" n="1">+</div>-->
+                                <!--<div class="imggroup imgfileGroup plusimg" style="display: none">-->
+                                    <!--<img src="{$carousel_pic2|get_cover='path'}" alt='图片' class='thumbnail imgbox'>-->
+                                    <!--<input type="file" class="imgfile" accept="image/png , image/jpg ,image/jpeg ,image/gif">-->
+                                    <!--<input type="hidden" name="carousel_images2" class="img"  value="{$carousel_pic2}" required="">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-3">-->
+                                <!--<div class=" plus plus2" style="display: none" >+</div>-->
+                                <!--<div class="imggroup imgfileGroup plusimg" style="display: none">-->
+                                    <!--<img src="{$carousel_pic3|get_cover='path'}" alt='图片' class='thumbnail imgbox'>-->
+                                    <!--<input type="file" class="imgfile" accept="image/png , image/jpg ,image/jpeg ,image/gif">-->
+                                    <!--<input type="hidden" name="carousel_images3" class="img"  value="{$carousel_pic3}" required="">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--{else/}-->
+                            <!--<div class="col-lg-3">-->
+                                <!--<div class="imggroup imgfileGroup plusimg">-->
+                                    <!--<img src="{$msg.carousel_images2|get_cover='path'}" alt='图片' class='thumbnail imgbox'>-->
+                                    <!--<input type="file" class="imgfile" accept="image/png , image/jpg ,image/jpeg ,image/gif">-->
+                                    <!--<input type="hidden" name="carousel_images2" class="img"  value="{$msg.carousel_images2}" required="">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-3">-->
+                                <!--{eq name="$msg.carousel_images3" value=""}-->
+                                <!--<div class=" plus plus2" n="2" >+</div>-->
+                                <!--<div class="imggroup imgfileGroup plusimg" style="display: none">-->
+                                    <!--<img src="{$carousel_pic3|get_cover='path'}" alt='图片' class='thumbnail imgbox'>-->
+                                    <!--<input type="file" class="imgfile" accept="image/png , image/jpg ,image/jpeg ,image/gif">-->
+                                    <!--<input type="hidden" name="carousel_images3" class="img"  value="{$carousel_pic3}" required="">-->
+                                <!--</div>-->
+                                <!--{else/}-->
+                                <!--<div class="imggroup imgfileGroup plusimg" n="3">-->
+                                    <!--<img src="{$msg.carousel_images3|get_cover='path'}" alt='图片' class='thumbnail imgbox'>-->
+                                    <!--<input type="file" class="imgfile" accept="image/png , image/jpg ,image/jpeg ,image/gif">-->
+                                    <!--<input type="hidden" name="carousel_images3" class="img"  value="{$msg.carousel_images3}" required="">-->
+                                <!--</div>-->
+                                <!--{/eq}-->
+                            <!--</div>-->
+                            <!--{/eq}-->
+                            <!--<div class="clear"></div>-->
+                        <!--</div>-->
                         <div class="form-group">
                             <div class="col-lg-1 text-right control-label">
-                                <label>标题:</label>
+                                <label>名称:</label>
                             </div>
                             <div class="col-lg-11">
-                                <input type="text" placeholder="请输入标题..." class="form-control form_title" name="title" value="{$msg.title}">
-                            </div>
-                        </div>
-                        {empty name="msg.start_time"}
-                        <div class="form-group" id="timeRange">
-                            <div class="col-lg-1 text-right control-label">
-                                <label>开始时间:</label>
-                            </div>
-                            <div class="col-lg-11">
-                                <div class="date">
-                                    <input type="text" placeholder="请输入开始时间...(可为空)" class="form-control datetimepicker" name="start_time"  value=""/>
-                                </div>
-
-                            </div>
-                        </div>
-                        {else/}
-                        <div class="form-group" id="timeRange">
-                            <div class="col-lg-1 text-right control-label">
-                                <label>开始时间:</label>
-                            </div>
-                            <div class="col-lg-11">
-                                <div class="date">
-                                    <input type="text" placeholder="请输入开始时间...(可为空)" class="form-control datetimepicker " name="start_time"  value="{$msg.start_time|time_format='Y-m-d H:i'}"/>
-                                </div>
-                            </div>
-                        </div>
-                        {/empty}
-                        {empty name="msg.end_time"}
-                        <div class="form-group" id="timeRange">
-                            <div class="col-lg-1 text-right control-label">
-                                <label>结束时间:</label>
-                            </div>
-                            <div class="col-lg-11">
-                                <div class="date">
-                                    <input type="text" placeholder="请输入结束时间...(可为空)" class="form-control datetimepicker" name="end_time"  value=""/>
-                                </div>
-
-                            </div>
-                        </div>
-                        {else/}
-                        <div class="form-group" id="timeRange">
-                            <div class="col-lg-1 text-right control-label">
-                                <label>结束时间:</label>
-                            </div>
-                            <div class="col-lg-11">
-                                <div class="date">
-                                    <input type="text" placeholder="请输入结束时间...(可为空)" class="form-control datetimepicker " name="end_time"  value="{$msg.end_time|time_format='Y-m-d H:i'}"/>
-                                </div>
-                            </div>
-                        </div>
-                        {/empty}
-                        <div class="form-group">
-                            <div class="col-lg-1 text-right control-label">
-                                <label>地址:</label>
-                            </div>
-                            <div class="col-lg-11">
-                                <input type="text" placeholder="请输入详细地址...(可为空)" class="form-control form_title" name="address" value="{$msg.address}">
+                                <input type="text" placeholder="请输入名称" class="form-control form_title" name="title" value="{$msg.title}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-1 text-right control-label">
-                                <label>联系方式:</label>
+                                <label>主题:</label>
                             </div>
                             <div class="col-lg-11">
-                                <input type="text" placeholder="请输入联系方式...(可为空)" class="form-control form_title" name="telephone" value="{$msg.telephone}">
+                                <input type="text" placeholder="请输入主题" class="form-control form_title" name="topic" value="{$msg.topic}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-1 text-right control-label">
+                                <label>简介:</label>
+                            </div>
+                            <div class="col-lg-11">
+                                <div class=" float-e-margins">
+                                    <div class="ibox-content no-padding borders">
+                                        <textarea  class="text form-control form_title" name="description">{$msg.description}</textarea>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -168,27 +195,57 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-lg-1 text-right control-label">-->
+                                <!--<label>主办方:</label>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-11">-->
+                                <!--<input type="text" placeholder="请输入主办方" class="form-control form_title" name="sponsor" value="{$msg.sponsor}">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-lg-1 text-right control-label">-->
+                                <!--<label>联系电话:</label>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-11">-->
+                                <!--<input type="text" placeholder="请输入联系电话" class="form-control form_title" name="telephone" value="{$msg.telephone}">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-lg-1 text-right control-label">-->
+                                <!--<label>花费:</label>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-11">-->
+                                <!--<input type="text" placeholder="请输入花费" class="form-control form_title" name="cost" value="{$msg.cost}">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="form-group" id="timeRange">
                             <div class="col-lg-1 text-right control-label">
-                                <label>发布人:</label>
+                                <label>活动时间:</label>
                             </div>
                             <div class="col-lg-11">
-                                <input type="text" placeholder="请输入发布人" class="form-control form_title" name="publisher" value="{$msg.publisher}">
+                                    <div class="date">
+                                        <input type="text" class="form-control datetimepicker " name="start_time"  value="{$msg.start_time|time_format='Y-m-d '}"/>
+                                    </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-lg-1 text-right control-label">
-                                <label>是否推荐:</label>
+                                <label>地址:</label>
                             </div>
                             <div class="col-lg-11">
-                                <label class="i-checks">
-                                    <input type="radio" value="1" name="recommend" {eq name="msg.recommend" value="1"}checked{/eq}>是
-                                </label>
-                                <label class="i-checks">
-                                    <input type="radio" value="0" name="recommend" {eq name="msg.recommend" value="0"}checked{/eq}>否
-                                </label>
+                                <input type="text" placeholder="请输入详细地址" class="form-control form_title" name="address" value="{$msg.address}">
                             </div>
                         </div>
+                        <!--<div class="form-group">-->
+                            <!--<div class="col-lg-1 text-right control-label">-->
+                                <!--<label>发布人:</label>-->
+                            <!--</div>-->
+                            <!--<div class="col-lg-11">-->
+                                <!--<input type="text" placeholder="请输入发布人" class="form-control form_title" name="publisher" value="{$msg.publisher}">-->
+                            <!--</div>-->
+                        <!--</div>-->
+
                         <input type="hidden" name="id" value="{$msg.id}">
                         <div class="form-group">
                             <div class="col-lg-11 col-lg-offset-1">
@@ -214,7 +271,12 @@
 <script>
     $(function(){
         //导航高亮
-        highlight_subnav("{:Url('Notice/index')}");
+        var type = $("select[name='type']").val();
+        if(type == 1){
+            highlight_subnav("{:Url('Notice/index')}");
+        }else{
+            highlight_subnav("{:Url('Notice/recruit')}");
+        }
 
         //上传图片
         var plus = $('.plus');
@@ -270,19 +332,36 @@
 
         $(".post-add").on("click",function(){
             /*重组轮播图，删除多余字符串（i是键值，1表示几位开始*/
+            var carousel_images1 = $("input[name='carousel_images1']").val();
+            var carousel_images2 = $("input[name='carousel_images2']").val();
+            var carousel_images3 = $("input[name='carousel_images3']").val();
             var it=$(this);
+            if(imgnum == 1){
+                var carousel_images = [carousel_images1];
+            }else if(imgnum == 2){
+                carousel_images = [carousel_images1,carousel_images2];
+            }else{
+                carousel_images = [carousel_images1,carousel_images2,carousel_images3];
+            }
             var data = {
                 id:$("input[name='id']").val(),
+                type:$("select[name='type']").val(),
                 front_cover:$("input[name='front_cover']").val(),
+//                list_image:$("input[name='list_image']").val(),
+//                carousel_images:carousel_images,
                 title:$("input[name='title']").val(),
-                start_time:$("input[name='start_time']").val(),
-                end_time:$("input[name='end_time']").val(),
+                topic:$("input[name='topic']").val(),
+                description:$("textarea[name='description']").val(),
                 content:ue.getContent(),
-                telephone:$("input[name='telephone']").val(),
+//                sponsor:$("input[name='sponsor']").val(),
+//                telephone:$("input[name='telephone']").val(),
+//                cost:$("input[name='cost']").val(),
+                start_time:$("input[name='start_time']").val(),
+//                end_time:$("input[name='end_time']").val(),
+//                date:$("input[name='date']").val(),
                 address:$("input[name='address']").val(),
-                publisher:$("input[name='publisher']").val(),
-                recommend:$("input[name='recommend']:checked").val(),
-                status:0,
+//                publisher:$("input[name='publisher']").val(),
+                status:1,
             };
             $.ajax({
                 type:"post",
@@ -332,8 +411,8 @@
         //    时间日历
         $( ".datetimepicker" ).datetimepicker( {
             language:  'cn',
-            format: 'yyyy-mm-dd hh:ii',
-            minView: "hour",
+            format: 'yyyy-mm-dd ',
+            minView: "month",
             forceParse: false,
             todayBtn: true,
             autoclose: true,

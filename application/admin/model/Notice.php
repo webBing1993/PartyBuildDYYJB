@@ -15,6 +15,7 @@ class Notice extends Base {
     public $insert = [
         'likes' => 0,
         'views' => 0,
+        'collect' => 0,
         'comments' => 0,
         'create_time' => NOW_TIME,
     ];
