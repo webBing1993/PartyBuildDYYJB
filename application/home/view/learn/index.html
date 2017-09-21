@@ -244,7 +244,7 @@
      */
     //提交
     $(function(){
-        $('.submit').on('click',function(e){
+        $('.submit').one('click',function(e){
             var data = [];
             $('.activity .list').each(function(){
                 var id = $(this ).attr('data-tab');
@@ -261,8 +261,7 @@
                     $('#true1').html('<br>1.'+data.url.right[1]+'，2.'+data.url.right[2]+'，3.'+data.url.right[3]+'，4.'+data.url.right[4]+'，5.'+data.url.right[5]);
                     var link='{$request}/home/constitution/scan';
                     $('#link').attr('href',link+'/id/'+data.url.id);
-
-
+                    $('.submit').attr("data-target","");
                 }
             });
         });
