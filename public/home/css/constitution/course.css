@@ -21,7 +21,7 @@
   font-size: 1.6rem;
   line-height: 7vw;
   text-align: center;
-  box-shadow: 1px 3px 8px rgba(153, 153, 153, 0.48);
+  box-shadow: 1px 0.8vw 2.2vw rgba(153, 153, 153, 0.48);
 }
 .lists {
   margin: 5vw auto;
@@ -42,18 +42,18 @@
   top: 6.2vw;
   left: 4vw;
   content: '';
-  width: 15px;
-  height: 15px;
+  width: 4vw;
+  height: 4vw;
   background: url('/home/images/constitution/circle01.png') 0 0 no-repeat;
-  background-size: 15px 15px;
+  background-size: 4vw 4vw;
 }
 .lists .list:nth-child(2):before {
   background: url('/home/images/constitution/circle02.png') 0 0 no-repeat;
-  background-size: 15px 15px;
+  background-size: 4vw 4vw;
 }
 .lists .list:nth-child(3):before {
   background: url('/home/images/constitution/circle03.png') 0 0 no-repeat;
-  background-size: 15px 15px;
+  background-size: 4vw 4vw;
 }
 .lists .list .title {
   width: 100%;
@@ -100,9 +100,9 @@
   color: #ffffff;
   font-size: 1.5rem;
   line-height: 9vw;
-  -webkit-border-radius: 6px;
-  border-radius: 6px;
-  box-shadow: 1px 3px 8px rgba(252, 79, 66, 0.51);
+  -webkit-border-radius: 1.6vw;
+  border-radius: 1.6vw;
+  box-shadow: 1px 0.8vw 2.2vw rgba(252, 79, 66, 0.51);
 }
 #modal .modal-content {
   width: 60vw;

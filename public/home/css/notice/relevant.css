@@ -9,6 +9,8 @@
 .article p {
   width: 100%;
   word-break: break-all;
+  text-indent: 2em;
+  line-height: 1.4;
 }
 .banner {
   width: 100vw;
@@ -55,7 +57,7 @@
 .content .top .read {
   background: url('/home/images/detail/scan_.png') 0 3.2vw no-repeat;
   background-size: 4vw 4vw;
-  padding-left: 18px;
+  padding-left: 4.8vw;
 }
 .content .top .col {
   background: url('/home/images/detail/star-border.png') 0 3.2vw no-repeat;
