@@ -1,0 +1,310 @@
+@charset "utf-8";
+/*public*/
+.t_b {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.banner{
+  width: 100vw;
+  height: 50vw;
+}
+.banner .banner-img{
+  height: 100%;
+  width: 100%;
+}
+.uecontent *{
+  width: 100%;
+}
+.title{
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.title span {
+  width: 100%;
+  text-align: left;
+}
+.note{
+  color: #999999;
+  font-size: 1.2rem;
+  padding: 0 4vw;
+  text-align: right;
+}
+.note_{
+  padding: 0;
+}
+/*文章*/
+.article {
+  width: 100%;
+  padding-left: 3.4666vw;
+  padding-right: 3.1666vw;
+  padding-top: 3.4666vw;
+}
+.article .title {
+  color: #333333;
+  font-size: 1.8rem;
+  font-weight: 600;
+  width: 100%;
+  display: inline-block;
+}
+.article .title p {
+  display: inline-block;
+  text-align: left;
+  width: auto;
+}
+.article .note {
+  color: #999999;
+  font-size: 1.2rem;
+  line-height: 8vw;
+}
+.article .note span.fl {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 60vw;
+  text-align: left;
+}
+.article .note_ span {
+  margin-right: 0;
+}
+.article .content {
+  width: 100%;
+  overflow: hidden;
+}
+.article .content * {
+  max-width: 100%!important;
+}
+.article .content img {
+  display: block;
+  max-width: 100%!important;
+  margin-bottom: 3.4666vw;
+}
+.article .content .video {
+  position: relative;
+  width: 100%;
+  height: 53.34vw;
+  margin-bottom: 2.67vw;
+  background: rgba(208, 208, 208, 0.5);
+}
+.article .content .video video {
+  width: 100%;
+  height: 14.2vw;
+}
+.article .content .video .play {
+  position: absolute;
+  top: calc(50% - 6.6666vw);
+  left: calc(50% - 6.6666vw);
+  width: 13.3333vw;
+  height: 13.3333vw;
+  opacity: 0.5;
+  display: none;
+}
+.article .content .video iframe {
+  width: 100%;
+  height: 100%;
+}
+.article .content .note {
+  color: #999999;
+  font-size: 1.46rem;
+}
+.article .content .note span {
+  display: inline-block;
+  margin-right: 2.68vw;
+  line-height: 10.68vw;
+}
+.article .content .note_ span{
+  margin-right: 0;
+}
+.article .content .note .read {
+  background: url('/home/images/detail/scan_.png') 0 3.2vw no-repeat;
+  background-size: 4vw 4vw;
+  padding-left: 4.8vw;
+}
+.article .content .note .good {
+  background: url('/home/images/detail/good.png') 0 3.2vw no-repeat;
+}
+.article .content .note .good_ {
+  animation: shake 300ms ease;
+  -webkit-animation: shake 300ms ease;
+  background: url('/home/images/detail/good_.png') 0 3.2vw no-repeat;
+}
+.article .content .note .isgood {
+  background-size: 4vw 4vw;
+  padding-left: 4.8vw;
+}
+/*评论*/
+.comment {
+  padding-bottom: 13.3333vw;
+}
+.comment .sum {
+  padding-left: 2.68vw;
+  background: #fcfcfc;
+  border-top: 0.2vw solid #f1f1f1;
+  border-bottom: 0.2vw solid #f1f1f1;
+  font-size: 1.2rem;
+  line-height: 8vw;
+}
+.comment .lists .list {
+  width: 100%;
+  padding-left: 3.47vw;
+  padding-right: 3.47vw;
+  min-height: 26.6666vw;
+  border-bottom: 0.27vw solid #f1f1f1;
+}
+.comment .lists .list .fl img {
+  width: 8vw;
+  height: 8vw;
+  margin-top: 3.47vw;
+  margin-right: 2.68vw;
+  overflow: hidden;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+.comment .lists .list .mid {
+  width: 73%;
+}
+.comment .lists .list .mid .name {
+  width: 100%;
+  line-height: 14.935vw;
+  color: #999999;
+}
+.comment .lists .list .mid .content {
+  width: 100%;
+  word-break: break-all;
+}
+.comment .lists .list .mid .time {
+  font-size: 1.2rem;
+  line-height: 5.34vw;
+  color: #999999;
+}
+.comment .lists .list .fr {
+  margin-top: 4vw;
+  color: #999999;
+}
+.comment .lists .list .good {
+  background: url('/home/images/detail/good.png') 0 0.5333vw no-repeat;
+}
+.comment .lists .list .good_ {
+  animation: shake 300ms ease;
+  -webkit-animation: shake 300ms ease;
+  background: url('/home/images/detail/good_.png') 0 0.5333vw no-repeat;
+}
+.comment .lists .list .isgood {
+  background-size: 4vw 4vw;
+  padding-left: 4.7999vw;
+}
+.comment .tip {
+  text-align: center;
+  line-height: 10.6666vw;
+  color: #c1c1c1;
+}
+/*底部*/
+.bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 12vw;
+  /*padding-left: 3.4vw;*/
+  border-top: 0.2vw solid #f1f1f1;
+  background: #ffffff;
+  font-family: "Microsoft YaHei", sans-serif;
+}
+.bottom .star {
+  background: url('/home/images/detail/star-border.png') 5.3333vw 3.1999vw no-repeat;
+}
+.bottom .star_ {
+  animation: shake 300ms ease;
+  -webkit-animation: shake 300ms ease;
+  background: url('/home/images/detail/star-yellow.png') 5.3333vw 3.1999vw no-repeat;
+}
+.bottom .collect {
+  width: 16vw;
+  height: 100%;
+  font-size: 1.2rem;
+  text-align: center;
+  background-size: 5.3vw 5.3vw;
+}
+.bottom .myword input {
+  vertical-align: middle;
+  height: 8vw;
+  width: 94vw;
+  margin: 2vw 0;
+  padding-left: 2.68vw;
+  background: #fafafa;
+  border: 0.27vw solid #d8d8d8;
+  -webkit-border-radius: 2vw;
+  border-radius: 2vw;
+  margin-left: 2.5vw;
+}
+.bottom .myword input::-webkit-input-placeholder {
+  color: #000;
+}
+.bottom .myword input:-moz-placeholder {
+  color:#000;
+}
+.bottom .myword input::-moz-placeholder {
+  color:#000;
+}
+.bottom .myword input:-ms-input-placeholder {
+  color:#000;
+}
+.sweet-alert fieldset{
+  margin-top: 5vw;
+}
+.sweet-alert.show-input textarea{
+  border: 0.27vw solid #d8d8d8 !important;
+  border-radius: 1.6vw;
+  width: 100%;
+  height: 20vw;
+  /*text-indent: 5vw;*/
+  padding: 3vw;
+}
+.sweet-alert p{
+  font-size: 1.7rem !important;
+}
+.sweet-alert .sa-error-container p{
+  font-size: 1.5rem !important;
+}
+.sweet-alert .sa-input-error.show{
+  opacity: 0 !important;
+}
+.sweet-alert.show-input textarea{
+  display: block;
+}
+.sweet-alert textarea{
+  display: none;
+}
+.bottom .send {
+  width: 20.5vw;
+  line-height: 12vw;
+  text-align: center;
+}
+.bottom .send:active {
+  background: #fafafa;
+}
+@media (max-width: 320px) {
+  .myword input {
+    /*width: 76vw;*/
+  }
+}
+.not{
+  /*opacity: 0;*/
+}
+
+/*加载动画*/
+.loading {
+  width: 100%;
+  height: 10.6666vw;
+}
+.typing_loader {
+  width: 1.6vw;
+  height: 1.6vw;
+  border-radius: 50%;
+  -webkit-animation: typing 1s linear infinite alternate;
+  -moz-animation: Typing 1s linear infinite alternate;
+  animation: typing 1s linear infinite alternate;
+  position: relative;
+  top: 3.5333vw;
+  left: 44.6vw;
+}

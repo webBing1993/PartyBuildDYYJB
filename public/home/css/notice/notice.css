@@ -1,0 +1,268 @@
+@-webkit-keyframes typing {
+  0% {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  25% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.8), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.8);
+  }
+}
+@keyframes typing {
+  0% {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  25% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.8), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.8);
+  }
+}
+@-webkit-keyframes cir {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: 1.4vw;
+    left: -13.4vw;
+    opacity: 1;
+  }
+}
+@keyframes cir {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: 1.4vw;
+    left: -13.4vw;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes cir2 {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: -13.1vw;
+    left: -1.6vw;
+    opacity: 1;
+  }
+}
+@keyframes cir2 {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: -13.1vw;
+    left: -1.6vw;
+    opacity: 1;
+  }
+}
+/*public*/
+/*banner*/
+.banner {
+  position: relative;
+  width: 100vw;
+  height: 50vw;
+}
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+/*tab切换*/
+.tabs {
+  width: 100%;
+  margin-top: 2.7vw;
+  margin-bottom: 2.7vw;
+  background: #fbfbfb;
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+}
+.tabs .tab {
+  display: inline-block;
+  width: 32.4vw;
+  height: 7.5vw;
+  text-align: center;
+}
+.tabs .tab span {
+  display: inline-block;
+  line-height: 7.5vw;
+}
+.tabs .tab .active {
+  border-bottom: 2px solid indianred;
+}
+@media screen and (max-width: 318px) {
+  .tabs .tab {
+    width: 30vw;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .tabs .tab {
+    float: left;
+  }
+}
+/*列表*/
+.content .notices .notice .tab {
+  display: block;
+  width: 100%;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  height: 8.6vw;
+  line-height: 8.6vw;
+  font-size: 1.2rem;
+}
+.content .notices .notice .list {
+  display: block;
+  width: 100%;
+  padding-left: 3.5vw;
+  padding-right: 3.5vw;
+  border-bottom: 1px solid #f1f1f1;
+  color: #666666;
+}
+.content .notices .notice .list .title {
+  color: #333333;
+  font-size: 1.4rem;
+}
+.content .notices .notice .list .content {
+  font-size: 1.3rem;
+  /*height: 9.1vw;*/
+}
+.content .notices .notice .list .time {
+  margin-top: 1.4vw;
+  font-size: 1.2rem;
+}
+.content .notices .notice:nth-child(1) .tab {
+  color: #e82a2a;
+}
+.content .notices .notice:nth-child(1) .list {
+  height: 24vw;
+}
+.content .notices .notice:nth-child(1) .list .title {
+  line-height: 8vw;
+}
+.content .notices .notice:nth-child(2) .tab {
+  color: #259b24;
+}
+.content .notices .notice:nth-child(3) .tab {
+  color: #f98800;
+}
+.content .notices .notice:nth-child(2) .list,
+.content .notices .notice:nth-child(3) .list {
+  height: 21.4vw;
+}
+.content .notices .notice:nth-child(2) .list .fl,
+.content .notices .notice:nth-child(3) .list .fl {
+  width: 21.4vw;
+}
+.content .notices .notice:nth-child(2) .list .fl img,
+.content .notices .notice:nth-child(3) .list .fl img {
+  width: 21.4vw;
+  height: 16vw;
+  margin-top: 2.7vw;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+.content .notices .notice:nth-child(2) .list .right,
+.content .notices .notice:nth-child(3) .list .right {
+  width: 66vw;
+  height: 16vw;
+  margin-top: 2.7vw;
+  margin-left: 2.7vw;
+}
+.content .notices .notice:nth-child(2) .list .right .title,
+.content .notices .notice:nth-child(3) .list .right .title {
+  margin-bottom: 1.4vw;
+  /*height: 10.2vw;*/
+}
+/*加载动画*/
+.tip {
+  height: 10.7vw;
+  text-align: center;
+  line-height: 10.7vw;
+  color: #c1c1c1;
+}
+.loading {
+  width: 100%;
+  height: 10.7vw;
+}
+.typing_loader {
+  width: 1.6vw;
+  height: 1.6vw;
+  border-radius: 50%;
+  -webkit-animation: typing 1s linear infinite alternate;
+  -moz-animation: Typing 1s linear infinite alternate;
+  animation: typing 1s linear infinite alternate;
+  position: relative;
+  top: 4.6vw;
+  left: 45.6vw;
+}
+/*悬浮按钮*/
+.new {
+  position: fixed;
+  right: 5.4vw;
+  bottom: 10.7vw;
+  width: 16vw;
+  height: 16vw;
+}
+.general {
+  background: url("/home/images/notice/note.png") no-repeat;
+  background-size: 100% 100%;
+}
+.manager {
+  background: url("/home/images/notice/index.png") no-repeat;
+  background-size: 100% 100%;
+}
+.manager_ {
+  right: 6.7vw;
+  bottom: 12vw;
+  width: 13.4vw;
+  height: 13.4vw;
+  background: url("/home/images/notice/index_.png") no-repeat;
+  background-size: 100% 100%;
+}
+.manager_ .before {
+  position: absolute;
+  top: 1.4vw;
+  left: -13.4vw;
+  content: '';
+  width: 10.7vw;
+  height: 10.7vw;
+  background: url("/home/images/notice/up_.png") no-repeat;
+  background-size: 100% 100%;
+  opacity: 1;
+  -webkit-animation: cir 0.5s ease-in;
+  animation: cir 0.5s ease-in;
+}
+.manager_ .after {
+  position: absolute;
+  top: -13.3vw;
+  left: -1.6vw;
+  content: '';
+  width: 10.7vw;
+  height: 10.7vw;
+  background: url("/home/images/notice/note_.png") no-repeat;
+  background-size: 100% 100%;
+  opacity: 1;
+  -webkit-animation: cir2 0.5s ease-in;
+  animation: cir2 0.5s ease-in;
+}
