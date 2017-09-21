@@ -336,6 +336,27 @@ class Notice extends Base {
         }
 
     }
+    /**
+     * 创意组织生活  加载更多
+     */
+    public function regularmore() {
+        $len = input("length");
+        $map = array(
+            'type' => 6,
+            'status' => array('eq',1)
+        );
+        $list = NoticeModel::where($map)->order('id desc')->limit($len,7)->select();
+        foreach($list as $value){
+            $img = Picture::get($value['front_cover']);
+            $value['path'] = $img['path'];
+            $value['time'] = date("Y-m-d",$value['create_time']);
+        }
+        if($list){
+            return $this->success("加载成功","",$list);
+        }else{
+            return $this->error("加载失败");
+        }
+    }
 
 
 }
