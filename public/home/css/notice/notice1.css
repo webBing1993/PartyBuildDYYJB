@@ -1,0 +1,232 @@
+@-webkit-keyframes typing {
+  0% {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  25% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.8), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.8);
+  }
+}
+@keyframes typing {
+  0% {
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  25% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.8), 6.4vw 0 0 0 rgba(0, 0, 0, 0.2);
+  }
+  75% {
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 3.2vw 0 0 0 rgba(0, 0, 0, 0.2), 6.4vw 0 0 0 rgba(0, 0, 0, 0.8);
+  }
+}
+@-webkit-keyframes cir {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: 1.4vw;
+    left: -13.4vw;
+    opacity: 1;
+  }
+}
+@keyframes cir {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: 1.4vw;
+    left: -13.4vw;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes cir2 {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: -49px;
+    left: -6px;
+    opacity: 1;
+  }
+}
+@keyframes cir2 {
+  0% {
+    top: 2.7vw;
+    left: 2.7vw;
+    opacity: 0;
+  }
+  100% {
+    top: -13.1vw;
+    left: -1.6vw;
+    opacity: 1;
+  }
+}
+/*public*/
+/*banner*/
+.banner {
+  width: 100vw;
+  height: 50vw;
+}
+.banner .banner-img {
+  width: 100%;
+  height: 100%;
+}
+/*tab切换*/
+.nav {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  overflow: hidden;
+}
+.nav .arr {
+  z-index: 9;
+  position: absolute;
+  bottom: 0;
+  width: 7.4vw;
+  height: 10vw;
+}
+.nav .arr.left {
+  left: -8vw;
+}
+.nav .arr.right {
+  right: 0;
+}
+.tabs {
+  z-index: 8;
+  position: relative;
+  width: 155vw;
+  height: 10vw;
+  background: rgba(246, 246, 246, 0.99);
+}
+.tabs span {
+  float:left;
+  display: inline-block;
+  height: 6vw;
+  padding: 0 5.4vw;
+  margin: 2vw 0;
+  border-right: 1px solid #e5e5e5;
+  color: #666666;
+  font-size: 1.4rem;
+  line-height: 6vw;
+  text-align: center;
+}
+@media screen and (max-width: 300px){
+  .tabs span{
+    padding: 0 4.5vw;
+  }
+}
+.tabs span:first-child {
+  margin-left: 1vw;
+}
+.tabs span:last-child {
+  border: none;
+}
+.tabs span.active {
+  position: relative;
+}
+.tabs span.active:after {
+  position: absolute;
+  bottom: -0.5vw;
+  left: 15%;
+  content: '';
+  width: 70%;
+  height: 2px;
+  background: #fd6c25;
+}
+@media screen and (max-width: 320px) {
+  .tabs span {
+    padding: 0 4vw;
+  }
+}
+.tags {
+  display: block;
+  padding: 2vw 4vw;
+  width: 100vw;
+  height: 8vw;
+  color: #999;
+  font-size: 1.3rem;
+  line-height: 4vw;
+  color: #e82a2a;
+  background: #f7f7f7;
+}
+/*列表*/
+.lists .list {
+  width: 100vw;
+  height: 26vw;
+  display: inline-block;
+  padding: 0 4vw;
+  border-bottom: 1px solid #f7f7f7;
+}
+.lists .list .title {
+  width: 96%;
+  color: #333;
+  font-size: 1.5rem;
+  padding: 2vw 0 2vw 0;
+  overflow: hidden;
+}
+.lists .list .content {
+  width: 96%;
+  height: 9vw;
+  color: #666666;
+  font-size: 1.4rem;
+  line-height: 5vw;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: inherit;
+}
+.lists .list .note {
+  color: #999999;
+  font-size: 1.2rem;
+  line-height: 6vw;
+  margin-bottom: 2vw;
+}
+.fa-angle-right{
+  position: absolute;
+  right: 2.7vw;
+  font-size: 1.6rem;
+  margin-top: -8vw;
+}
+.listimg .fa-angle-right{
+  margin-top: 2px;
+}
+.lists .list .note span.time {
+  text-align: right;
+  margin-right: 5.4vw;
+}
+.lists.listimg .list {
+  width: 100vw;
+  height: 22vw;
+}
+.lists.listimg .list .fl img {
+  width: 22vw;
+  height: 14vw;
+  margin-top: 3.5vw;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.lists.listimg .list .title {
+  width: 66vw;
+  height: 14vw;
+  color: #333333;
+  font-size: 1.5rem;
+  line-height: 6vw;
+}
+.lists.listimg .list .note {
+  width: 66vw;
+}
