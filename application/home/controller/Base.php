@@ -162,6 +162,12 @@ class Base extends Controller {
             case 4:
                 $table = "notice";
                 break;
+            case 5:
+                $table = "centraltask";
+                break;
+            case 6:
+                $table = "news";
+                break;
             default:
                 return $this->error("无该数据表");
                 break;
@@ -284,6 +290,12 @@ class Base extends Controller {
                     break;
                 case 4:
                     $table = "notice";
+                    break;
+                case 5:
+                    $table = "centraltask";
+                    break;
+                case 6:
+                    $table = "news";
                     break;
                 default:
                     return $this->error("无该数据表");
