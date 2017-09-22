@@ -1,0 +1,50 @@
+/*底部*/
+.bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 12vw;
+    padding-left: 0;
+    border-top: 0.2vw solid #f1f1f1;
+    background: #ffffff;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+.bottom .star {
+    background: url('/home/images/detail/star-border.png') 5.3333vw 3.1999vw no-repeat;
+}
+.bottom .star_ {
+    animation: shake 300ms ease;
+    -webkit-animation: shake 300ms ease;
+    background: url('/home/images/detail/star-yellow.png') 5.3333vw 3.1999vw no-repeat;
+}
+.bottom .collect {
+    width: 16vw;
+    height: 100%;
+    font-size: 1.2rem;
+    text-align: center;
+    background-size: 5.3vw 5.3vw;
+}
+.bottom .myword input {
+    vertical-align: middle;
+    height: 8vw;
+    width: 94vw;
+    margin: 2vw 0;
+    padding-left: 2.68vw;
+    background: #fafafa;
+    border: 0.27vw solid #d8d8d8;
+    -webkit-border-radius: 2vw;
+    border-radius: 2vw;
+    margin-left: 2.5vw;
+}
+.bottom .myword input::-webkit-input-placeholder {
+    color: #000;
+}
+.bottom .myword input:-moz-placeholder {
+    color:#000;
+}
+.bottom .myword input::-moz-placeholder {
+    color:#000;
+}
+.bottom .myword input:-ms-input-placeholder {
+    color:#000;
+}
