@@ -47,6 +47,7 @@
 {block name="script"}
 <script src="/static/swiper/swiper-3.3.1.jquery.min.js"></script>
 <script>
+	var scrollNow = true;
 $(function(){
 	//模块标题
 	$('title').text('最新动态');
@@ -74,7 +75,8 @@ function loadScroll(){
 		var len = $(".list" ).length;
 		var tip = $(".tip");
 		var loading = $('.loading');
-		if(dh == end){
+		if(dh == end && scrollNow){
+			scrollNow = false;
 			$.ajax({
 				type:"post",
 				url:"{:Url('News/listmore')}",
@@ -98,6 +100,7 @@ function loadScroll(){
 						tip.text('没有更多了');
 						$(window ).off("scroll");
 					}
+					scrollNow = true;
 				}
 			})
 		}
