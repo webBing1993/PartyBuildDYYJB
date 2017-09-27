@@ -137,10 +137,11 @@ class Base extends Controller {
      * 点赞，$type,$aid
      * type值：
      * 0 评论点赞
-     * 1 news
      * 2 feedback
      * 3 learn
      * 4 notice
+     * 5 centraltask
+     * 6 news
      */
     public function like(){
         $uid = session('userId'); //点赞人
@@ -149,9 +150,6 @@ class Base extends Controller {
         switch ($type) {    //根据类别获取表明
             case 0:
                 $table = "comment";
-                break;
-            case 1:
-                $table = "news";
                 break;
             case 2:
                 $table = "opinion";
@@ -268,10 +266,11 @@ class Base extends Controller {
     /**
      * 评论，$type,$aid,$content
      * type值：
-     * 1 news
      * 2 feedback
      * 3 learn
      * 4 notice
+     * 5 centraltask
+     * 6 news
      */
     public function comment(){
         if(IS_POST){
@@ -279,9 +278,6 @@ class Base extends Controller {
             $type = input('type');
             $aid = input('aid');
             switch ($type) {    //根据类别获取表明
-                case 1:
-                    $table = "news";
-                    break;
                 case 2:
                     $table = "opinion";
                     break;

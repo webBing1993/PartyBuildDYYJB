@@ -233,6 +233,7 @@ class Learn extends Base{
         //浏览加一
         $info['views'] = array('exp','`views`+1');
         $learnModel::where('id',$id)->update($info);
+
         if($userId != "visitor"){
             //浏览不存在则存入pb_browse表
             $con = array(
@@ -241,14 +242,12 @@ class Learn extends Base{
             );
             $history = Browse::get($con);
             if(!$history && $id != 0){
+                Browse::create($con);
                 $s['score'] = array('exp','`score`+1');
-                if ($this->score_up()){
-                    // 未满 15分
-                    Browse::create($con);
-                    WechatUser::where('userid',$userId)->update($s);
-                }
+                WechatUser::where('userid',$userId)->update($s);
             }
         }
+
         $video = $learnModel::get($id);
         $video['user'] = session('userId');
         //分享图片及链接及描述
@@ -283,6 +282,7 @@ class Learn extends Base{
         //浏览加一
         $info['views'] = array('exp','`views`+1');
         $learnModel::where('id',$id)->update($info);
+
         if($userId != "visitor"){
             //浏览不存在则存入pb_browse表
             $con = array(
@@ -291,12 +291,9 @@ class Learn extends Base{
             );
             $history = Browse::get($con);
             if(!$history && $id != 0){
+                Browse::create($con);
                 $s['score'] = array('exp','`score`+1');
-                if ($this->score_up()){
-                    // 未满 15 分
-                    Browse::create($con);
-                    WechatUser::where('userid',$userId)->update($s);
-                }
+                WechatUser::where('userid',$userId)->update($s);
             }
         }
         $article = $learnModel::get($id);

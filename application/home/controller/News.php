@@ -56,19 +56,16 @@ class News extends Base {
 
         if($userId != "visitor"){
             //浏览不存在则存入pb_browse表
-            /*$con = array(
+            $con = array(
                 'user_id' => $userId,
                 'news_id' => $id,
             );
             $history = Browse::get($con);
             if(!$history && $id != 0){
+                Browse::create($con);
                 $s['score'] = array('exp','`score`+1');
-                if ($this->score_up()){
-                    // 未超过 15分
-                    WechatUser::where('userid',$userId)->update($s);
-                    Browse::create($con);
-                }
-            }*/
+                WechatUser::where('userid',$userId)->update($s);
+            }
         }
         //详细信息
         $info = NewsModel::get($id);
