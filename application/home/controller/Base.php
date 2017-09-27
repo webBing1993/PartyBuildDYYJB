@@ -186,7 +186,7 @@ class Base extends Controller {
                 $res = $likeModel->create($data);
                 if($res) {
                     //点赞成功积分+1
-//                    WechatUser::where('userid',$uid)->setInc('score',1);
+                    WechatUser::where('userid',$uid)->setInc('score',1);
                     //更新数据
                     Db::name($table)->where('id',$aid)->setInc('likes');
                     return $this->success("点赞成功");
@@ -217,7 +217,7 @@ class Base extends Controller {
                 $result = $likeModel::where($data)->delete();
                 if($result) {
                     //取消成功积分-1
-//                    WechatUser::where('userid',$uid)->setDec('score',1);
+                    WechatUser::where('userid',$uid)->setDec('score',1);
                     Db::name($table)->where('id',$aid)->setDec('likes');
                     return $this->success("取消成功");
                 }else {
@@ -314,7 +314,7 @@ class Base extends Controller {
                 $res = $commentModel->create($data);
                 if($res) {  //返回comment数组
                     //评论成功增加1分
-//                    WechatUser::where('userid',$uid)->setInc('score',1);
+                    WechatUser::where('userid',$uid)->setInc('score',1);
                     //更新主表数据
                     $map['id'] = $res['aid'];   //文章id
                     $model = Db::name($table)->where($map)->setInc('comments');
