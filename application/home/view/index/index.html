@@ -135,10 +135,7 @@
             var ntc = $('.notices');
             var dh = $(document).height();
             var end = $(window).height() + $(window).scrollTop();
-            var news_len = $('.notice .list[data-type=1]').length;
-            var learn_len = $('.notice .list[data-type=2]').length;
-            var notice_len = $('.notice .list[data-type=3]').length;
-            var pioneer_len = $('.notice .list[data-type=4]').length;
+            var len = $('.notice .list').length;
             var tip = $(".tip");
             var loading = $('.loading');
             if(dh == end && scrollNow){
@@ -147,10 +144,7 @@
                     type:"get",
                     url: "{:Url('Index/moreDataList')}",
                     data:{
-                        news: news_len,
-                        learn: learn_len,
-                        notice: notice_len,
-                        pioneer: pioneer_len
+                       length:len
                     },
                     beforeSend: function(XMLHttpRequest){
                         tip.hide();
@@ -162,7 +156,7 @@
                         if(data.code == 1){
                             addLists(data);
                             var dataLen =data.data.length;
-                            if(data.data.length == 6){
+                            if(data.data.length == 7){
                                 tip.text('上拉加载更多');
                             }
                         }else{
@@ -185,10 +179,16 @@
             var list = lists[i];
             var link = '';
             var type_name ='';
-            if(list.class == 1){
-                class_name = '红色足迹';
-                link = '/home/details/index/id/'+list.id;
-            }else if(list.class == 2){
+            if (list.class_type == 1) {
+
+                class_name = '三会一课';
+                if(list.type == 2){
+                    link = '/home/notice/meet/id/'+list.id;
+                }else{
+                    link = '/home/notice/party/id/'+list.id;
+                }
+            } else if (list.class_type == 2){
+
                 class_name = '两学一做';
                 //1视频 2文字
                 if(list.type == 2){
@@ -196,18 +196,26 @@
                 }else{
                     link = '/home/learn/video/id/'+list.id;
                 }
-            }else if(list.class == 3){
-                class_name = '鸡毛传贴';
-                link = '/home/college/forumnotice/id/'+list.id;
-            }else if(list.class == 4){
-                class_name = '先锋事迹';
-                link = '/home/pioneer/detail/id/'+list.id;
+            } else if (list.class_type == 3){
+
+                class_name = '美丽乡村';
+                if(list.type == 1){
+                    link = '/home/centraltask/note/id/'+list.id;
+                }else{
+                    link = '/home/centraltask/work/id/'+list.id;
+                }
+            } else if (list.class_type == 4){
+
+                class_name = '最新动态';
+                link = '/home/news/detail/id/'+list.id;
             }
+
             if(list.publisher.length >9){
                 list.publisher = list.publisher.substring(0,9)+'...';
             }
+
             html +=
-                    '<a href="'+link+'" class="list clear" data-type='+list.class+'>'+
+                    '<a href="'+link+'" class="list clear" >'+
                     '<div class="fl">'+
                     '<img src="'+list.path+'" alt="图片">'+
                     '<span class="type">'+class_name+'</span>'+
@@ -221,8 +229,32 @@
                     '</div>'+
                     '</a>'
         }
+
         $('.notice').append(html);
     }
 
+
+    var tip = $(".tip");
+    $.ajax({
+        type:"get",
+        url: "{:Url('Index/moreDataList')}",
+        data:{
+            length:0
+        },
+        beforeSend: function(XMLHttpRequest){
+
+        },
+        success:function(data){
+            if(data.code == 1){
+                addLists(data);
+                var dataLen =data.data.length;
+                if(data.data.length == 7){
+                    loadScroll();
+                    tip.text('上拉加载更多');
+                }
+            }
+        }
+    })
+
 </script>
-{/block}
+{/block}}
