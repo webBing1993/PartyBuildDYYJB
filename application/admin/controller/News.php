@@ -10,8 +10,7 @@ namespace app\admin\controller;
 use think\Controller;
 use app\admin\model\Picture;
 use app\admin\model\Push;
-use app\admin\model\PushReview;
-use com\wechat\TPQYWechat;
+use com\wechat\TPWechat;
 use app\admin\model\News as NewsModel;
 use think\Config;
 /**
@@ -157,96 +156,99 @@ class News extends Admin {
     /*
      * 新闻推送
      */
-    public function push(){
+    public function push()
+    {
         $data = input('post.');
         $httpUrl = config('http_url');
+        $openid = config('openid');
+        $Wechat = new TPWechat(Config::get('party'));
         $arr1 = $data['focus_main'];      //主图文id
-        isset($data['focus_vice']) ? $arr2 = $data['focus_vice'] : $arr2 = "";  //副图文id
-        if($arr1 == -1){
+        isset($data['focus_vice']) ? $arr2 = $data['focus_vice'] : $arr2 = [];  //副图文id
+        $articles = [];
+        if ($arr1 == -1) {
+
             return $this->error('请选择主图文');
-        }else{
-            //主图文信息
-            $info1 = NewsModel::where('id',$arr1)->find();
-            //$update['status'] = '2';
-            $title1 = $info1['title'];
-            $type_name1 = "【最新动态】";
-           // NewsModel::where(['id'=>$arr1])->update($update); // 更新推送后的状态
-            $str1 = strip_tags($info1['content']);
-            $des1 = mb_substr($str1,0,40);
-            $content1 = str_replace("&nbsp;","",$des1);  //空格符替换成空
-            $url1 = $httpUrl."/home/news/detail/id/".$info1['id'].".html";
-            $image1 = Picture::get($info1['front_cover']);
-            $path1 = $httpUrl.$image1['path'];
-            $information1 = array(
-                'title' => $type_name1 . $title1,
-                'description' => $content1,
-                'url'  => $url1,
-                'picurl' => $path1
-            );
-        }
-        $information = array();
-        if(!empty($arr2)){
-            //副图文信息
-            $information2 = array();
-            foreach($arr2 as $key=>$value){
-               // NewsModel::where(['id'=>$value])->update($update); // 更新推送后的状态
-                $info2 = NewsModel::where('id',$value)->find();
-                $title2 = $info2['title'];
-                $type_name = "【最新动态】";
-                $str2 = strip_tags($info2['content']);
-                $des2 = mb_substr($str2,0,40);
-                $content2 = str_replace("&nbsp;","",$des2);  //空格符替换成空
-                $url2 = $httpUrl."/home/news/detail/id/".$info2['id'].".html";
-                $image2 = Picture::get($info2['front_cover']);
-                $path2 = $httpUrl.$image2['path'];
-                $information2[] = array(
-                    "title" =>$type_name . $title2,
-                    "description" => $content2,
-                    "url" => $url2,
-                    "picurl" => $path2,
+        } else {
+            //主副图文信息
+            array_unshift($arr2, $arr1);
+
+            //先上传素材 media_id
+            foreach ($arr2 as $k => $v) {
+                $info = NewsModel::where('id', $arr1)->find();
+                $info['img'] = get_cover($info['front_cover'])['path'];
+                $data = array(
+                    "media" => '@.' . $info['img']
                 );
+                $img = $Wechat->uploadForeverMedia($data, 'thumb');
+                $info['thumb_media_id'] = $img['media_id'];
+                $id = $info['id'];
+                $info['content_source_url'] = "$httpUrl/home/news/detail/id/$id";
+
+                array_push($articles, $info);
             }
-            //数组合并,主图文放在首位
-            foreach($information2 as $key=>$value){
-                $information[0] = $information1;
-                $information[$key+1] = $value;
+
+            //图文素材列表
+            $article = array();
+            foreach ($articles as $k => $v) {
+                $article['articles'][$k] = [
+                    'thumb_media_id' => $v['thumb_media_id'],
+                    'author' => $v['publisher'],
+                    'title' => "【最新动态】" . $v['title'],
+                    'content_source_url' => $v['content_source_url'],
+                    "content" => $v['content'],
+                    "digest" => $v['title'],
+                    "show_cover_pic" => 0,
+                ];
             }
-        }else{
-            $information[0] = $information1;
-        }
-        //重组成article数据
-        $send = array();
-        $re[] = $information;
-        foreach($re as $key => $value){
-            $key = "articles";
-            $send[$key] = $value;
+
         }
 
-        //发送给企业号
-        $Wechat = new TPQYWechat(Config::get('review'));
-        $message = array(
-            "touser" => "15036667391",
-//            "totag" => "4",  // 审核组
-            "msgtype" => 'news',
-            "agentid" => 11,  // 消息审核
-            "news" => $send,
-            "safe" => "0"
-        );
-        $msg = $Wechat->sendMessage($message);  // 推送至审核
+        $lists = $article;
+        //上传多条图文素材
+        $info = $Wechat->uploadForeverArticles($lists);
+        $info = json_decode($info);
 
-        if($msg['errcode'] == 0){
+        // 测试
+        if (!empty($openid)) {
+            // 预览图文通知
+            $notice = array(
+                "touser" => $openid,
+                "mpnews" => [
+                    "media_id" => $info['media_id']
+                ],
+                "msgtype" => "mpnews"
+            );
+            $result = $Wechat->previewMassMessage($notice);
+        } else {
+            //消息群发
+//                $send = [
+//                    "filter" => [
+//                        "is_to_all" =>true
+//                    ],
+//                    "mpnews" =>[
+//                        "media_id" => $info['media_id']
+//                    ],
+//                    "msgtype" => "mpnews",
+//                    "send_ignore_reprint" => 0
+//                ];
+//                $result = $Wechat ->sendGroupMassMessage($send);
+        }
+
+        $result = json_decode($result);
+
+        if ($result['errcode'] == 0) {
             $data['focus_vice'] ? $data['focus_vice'] = json_encode($data['focus_vice']) : $data['focus_vice'] = null;
             $data['create_user'] = session('user_auth.username');
             $data['class'] = 1;
             $data['status'] = 0;
             //保存到推送列表
             $result = Push::create($data);
-            if($result){
+            if ($result) {
                 return $this->success('发送成功');
-            }else{
+            } else {
                 return $this->error('发送失败');
             }
-        }else{
+        } else {
             return $this->error('发送失败');
         }
     }
