@@ -13,7 +13,10 @@
 <div class="title limit_" style="margin:2.7vw auto;width:90%;text-align: center;min-height:8vw;line-height: 6.8vw;">
 	<span style="color:#333;font-size:1.6rem;">{$meet['title']}</span>
 </div>
-<div class="note">{$meet.create_time|time_format="Y-m-d"}</div>
+<div class="note clear">
+	<span class="fl">{$meet.publisher}</span>
+	<span class="fr">{$meet.create_time|time_format="Y-m-d"}</span>
+</div>
 <!--新增-->
 <div class="article" style="padding-top:0;margin-top:2.7vw;">
 	<div class="content">
