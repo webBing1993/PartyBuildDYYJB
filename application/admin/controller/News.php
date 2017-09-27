@@ -108,13 +108,16 @@ class News extends Admin {
         if(IS_POST){
             $id = input('id');//主图文id
             //副图文本周内的新闻消息
-            $t = $this->week_time();
+            //$t = $this->week_time();
             $info = array(
                 'id' => array('neq',$id),
-                'create_time' => array('egt',$t),
+                //'create_time' => array('egt',$t),
                 'status' => 1
             );
             $infoes = NewsModel::where($info)->select();
+            foreach ($infoes as $value) {
+                $value['type_text'] = "【最新动态】";
+            }
             return $this->success($infoes);
         }else{
             //新闻消息列表
@@ -130,20 +133,23 @@ class News extends Admin {
             //数据重组
             foreach($list as $value){
                 $msg = NewsModel::where('id',$value['focus_main'])->find();
-                $value['title'] = $msg['title'];
+                $value['title'] = 'aa'.$msg['title'];
                 //审核信息
-                $review = PushReview::where('push_id',$value['id'])->find();
-                $value['review_name'] = $review['username'];
-                $value['review_time'] = $review['review_time'];
+//                $review = PushReview::where('push_id',$value['id'])->find();
+//                $value['review_name'] = $review['username'];
+//                $value['review_time'] = $review['review_time'];
             }
             $this->assign('list',$list);
             //主图文本周内的新闻消息
-            $t = $this->week_time();
+            //$t = $this->week_time();
             $info = array(
-                'create_time' => array('egt',$t),
+                //'create_time' => array('egt',$t),
                 'status' => 1
             );
             $infoes = NewsModel::where($info)->select();
+            foreach ($infoes as $value) {
+                $value['type_text'] = "【最新动态】";
+            }
             $this->assign('info',$infoes);
             return $this->fetch();
         }
@@ -153,6 +159,7 @@ class News extends Admin {
      */
     public function push(){
         $data = input('post.');
+        $httpUrl = config('http_url');
         $arr1 = $data['focus_main'];      //主图文id
         isset($data['focus_vice']) ? $arr2 = $data['focus_vice'] : $arr2 = "";  //副图文id
         if($arr1 == -1){
@@ -160,38 +167,40 @@ class News extends Admin {
         }else{
             //主图文信息
             $info1 = NewsModel::where('id',$arr1)->find();
+            //$update['status'] = '2';
+            $title1 = $info1['title'];
+            $type_name1 = "【最新动态】";
+           // NewsModel::where(['id'=>$arr1])->update($update); // 更新推送后的状态
+            $str1 = strip_tags($info1['content']);
+            $des1 = mb_substr($str1,0,40);
+            $content1 = str_replace("&nbsp;","",$des1);  //空格符替换成空
+            $url1 = $httpUrl."/home/news/detail/id/".$info1['id'].".html";
+            $image1 = Picture::get($info1['front_cover']);
+            $path1 = $httpUrl.$image1['path'];
+            $information1 = array(
+                'title' => $type_name1 . $title1,
+                'description' => $content1,
+                'url'  => $url1,
+                'picurl' => $path1
+            );
         }
-        $update['status'] = '2';
-        $title1 = $info1['title'];
-        NewsModel::where(['id'=>$arr1])->update($update); // 更新推送后的状态
-        $str1 = strip_tags($info1['content']);
-        $des1 = mb_substr($str1,0,40);
-        $content1 = str_replace("&nbsp;","",$des1);  //空格符替换成空
-        $url1 = "http://dqpb.0571ztnet.com/home/review/detail/id/".$info1['id'].".html";
-        $image1 = Picture::get($info1['front_cover']);
-        $path1 = "http://dqpb.0571ztnet.com".$image1['path'];
-        $information1 = array(
-            'title' => $title1,
-            'description' => $content1,
-            'url'  => $url1,
-            'picurl' => $path1
-        );
         $information = array();
         if(!empty($arr2)){
             //副图文信息
             $information2 = array();
             foreach($arr2 as $key=>$value){
-                NewsModel::where(['id'=>$value])->update($update); // 更新推送后的状态
+               // NewsModel::where(['id'=>$value])->update($update); // 更新推送后的状态
                 $info2 = NewsModel::where('id',$value)->find();
                 $title2 = $info2['title'];
+                $type_name = "【最新动态】";
                 $str2 = strip_tags($info2['content']);
                 $des2 = mb_substr($str2,0,40);
                 $content2 = str_replace("&nbsp;","",$des2);  //空格符替换成空
-                $url2 = "http://dqpb.0571ztnet.com/review/news/detail/id/".$info2['id'].".html";
+                $url2 = $httpUrl."/home/news/detail/id/".$info2['id'].".html";
                 $image2 = Picture::get($info2['front_cover']);
-                $path2 = "http://dqpb.0571ztnet.com".$image2['path'];
+                $path2 = $httpUrl.$image2['path'];
                 $information2[] = array(
-                    "title" =>$title2,
+                    "title" =>$type_name . $title2,
                     "description" => $content2,
                     "url" => $url2,
                     "picurl" => $path2,
