@@ -62,7 +62,7 @@ class Centraltask extends Admin {
                 return $this->get_update_error_msg($Model->getError());
             }
         }else{
-            $this->default_pic();
+//            $this->default_pic();
             $this->assign('msg','');
 
             return $this->fetch('edit');

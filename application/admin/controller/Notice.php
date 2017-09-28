@@ -101,7 +101,7 @@ class Notice extends Admin {
                 return $this->error($noticeModel->getError());
             }
         }else {
-            $this->default_pic();
+//            $this->default_pic();
 
             $type = input('type');
             $this->assign('type',$type);
@@ -131,7 +131,7 @@ class Notice extends Admin {
                 return $this->error($noticeModel->getError());
             }
         }else{
-            $this->default_pic();
+//            $this->default_pic();
 
             $id = input('id');
             $msg = NoticeModel::get($id);
@@ -196,7 +196,7 @@ class Notice extends Admin {
                 return $this->get_update_error_msg($noticeModel->getError());
             }
         }else{
-            $this->default_pic();
+//            $this->default_pic();
 
             $id = input('id');
             $msg = NoticeModel::get($id);

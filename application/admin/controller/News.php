@@ -55,7 +55,7 @@ class News extends Admin {
                 return $this->error($newModel->getError());
             }
         }else{
-            $this->default_pic();
+//            $this->default_pic();
             $this->assign('msg','');
 
             return $this->fetch('edit');
