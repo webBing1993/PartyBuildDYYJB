@@ -90,7 +90,7 @@ class Centraltask extends Admin {
                 return $this->get_update_error_msg($Model->getError());
             }
         }else{
-            $this->default_pic();
+//            $this->default_pic();
             $id = input('id');
             $msg = CentraltaskModel::get($id);
             $this->assign('msg',$msg);

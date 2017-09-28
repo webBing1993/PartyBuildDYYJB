@@ -77,7 +77,7 @@ class News extends Admin {
                 return $this->get_update_error_msg($newModel->getError());
             }
         }else{
-            $this->default_pic();
+//            $this->default_pic();
             $id = input('id');
             $msg = NewsModel::get($id);
             $this->assign('msg',$msg);
