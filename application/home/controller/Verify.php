@@ -127,6 +127,7 @@ class Verify extends Controller{
      * @return mixed
      */
     public function memberslogin(){
+        $this->assign('title',config('title'));
         return $this ->fetch();
     }
     public function null(){

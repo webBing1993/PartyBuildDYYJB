@@ -47,7 +47,8 @@ return [
      //  推送网站域名
     'http_url' => "http://ymz.zt.cn",
     // 本地测试 线上请直接为空
-    'openid' => 'ome1gxJkdYt9Ji1LZjvl4d2d-6Fk'//王志超'
-
+    'openid' => 'ome1gxJkdYt9Ji1LZjvl4d2d-6Fk',//王志超'
+    //页面title
+    'title' => '梦想小镇红色驿站'
 
 ];

@@ -25,6 +25,7 @@ class Index extends Base {
         $this ->anonymous();
         $uid = session('userId');
         $this ->assign('user',$uid);
+        $this->assign('title',config('title'));
         $this->assign('test',0);
 
         return $this->fetch();
