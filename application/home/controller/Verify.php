@@ -109,6 +109,7 @@ class Verify extends Controller{
         //cookie初始化 session 初始化
         Cookie::delete('dypb');
         session('userId',null);
+        $this->assign('title',config('title'));
         return $this ->fetch('memberslogin');
     }
     /**
