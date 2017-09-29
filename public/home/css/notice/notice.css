@@ -146,12 +146,13 @@
 .content .notices .notice .list .time {
   margin-top: 1.4vw;
   font-size: 1.2rem;
+  margin-bottom: 1.6vw;
 }
 .content .notices .notice:nth-child(1) .tab {
   color: #e82a2a;
 }
 .content .notices .notice:nth-child(1) .list {
-  height: 24vw;
+  /*height: 24vw;*/
 }
 .content .notices .notice:nth-child(1) .list .title {
   line-height: 8vw;
@@ -168,7 +169,7 @@
 }
 .content .notices .notice:nth-child(2) .list .fl,
 .content .notices .notice:nth-child(3) .list .fl {
-  width: 21.4vw;
+  width: 24vw;
 }
 .content .notices .notice:nth-child(2) .list .fl img,
 .content .notices .notice:nth-child(3) .list .fl img {
