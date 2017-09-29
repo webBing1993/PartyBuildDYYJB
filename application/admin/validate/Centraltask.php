@@ -39,7 +39,7 @@ class Centraltask extends Validate {
         'publisher' => '发布人不能为空'
     ];
     protected $scene = [
-        'one' => ['pid','type','title','content','summary','time','address','telephone','publisher'],
+        'one' => ['pid','type','front_cover','title','content','summary','time','address','telephone','publisher'],
         'two' => ['pid','type','front_cover','title','content','publisher'],
     ];
 }
