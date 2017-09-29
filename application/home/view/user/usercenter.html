@@ -105,7 +105,7 @@
                         up.attr('src',msg.data.path);
                         $.ajax({
                             type:"post",
-                            url:"{:Url('Rank/setHeader')}",
+                            url:"{:Url('User/setHeader')}",
                             data:{header:msg.data.path},
                             success:function(data){
                                 swal({

@@ -23,7 +23,7 @@ class User extends Base {
         $userId = session('userId');
         $header = input('header');
         $map = array(
-            'header' => $header,
+            'headimgurl' => $header,
         );
         $info = WechatUser::where('userid',$userId)->update($map);
         if($info){
