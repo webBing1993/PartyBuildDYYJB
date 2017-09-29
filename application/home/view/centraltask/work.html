@@ -1,6 +1,7 @@
 {extend name="public/common"}
 
 {block name="style"}
+<title>美丽乡村</title>
 <link rel="stylesheet" href="/home/css/common/detail1.css">
 <link rel="stylesheet" href="/static/sweetalert/sweetalert1.css">
 <link rel="stylesheet" href="/home/css/common/comment1.css">
@@ -97,7 +98,6 @@
 <script>
 	var scrollNow = true;//判断下拉请求是否执行中.false为正在请求
 $(function(){
-	$('title' ).text('中心工作');
 	//reset
 	var len = $(".list" ).length;
 	if(len >= 7){
