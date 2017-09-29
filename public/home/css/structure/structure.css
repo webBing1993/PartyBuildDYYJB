@@ -150,6 +150,13 @@ body {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+  .listbox .box.shouldKnow .box_ .title{
+    /*width: 100vw;*/
+    font-size: 1.6rem;
+    color: #333333;
+    line-height: 16vw;
+    text-align: center;
+  }
 .listbox .box .box_:last-child {
   margin-bottom: 5vw;
 }
