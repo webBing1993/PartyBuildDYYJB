@@ -45,6 +45,8 @@
 }
 .list .lr{
 	width: 62vw;
+	position: relative;
+	height: 24vw;
 }
 .list .lr .title{
 	width: 100%;
@@ -56,6 +58,9 @@
 .list .lr .clear{
 	font-size: 1.2rem;
 	color:#999999;
+	position: absolute;
+	bottom: 2vw;
+	width: 62vw;
 }
 .tip{
 	height: 10.7vw;

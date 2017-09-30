@@ -166,10 +166,11 @@
 /*列表*/
 .lists .list {
   width: 100vw;
-  height: 26vw;
   display: inline-block;
   padding: 0 4vw;
   border-bottom: 1px solid #f7f7f7;
+  position: relative;
+  height: 27.4vw;
 }
 .lists .list .title {
   width: 96%;
@@ -180,7 +181,6 @@
 }
 .lists .list .content {
   width: 96%;
-  height: 9vw;
   color: #666666;
   font-size: 1.4rem;
   line-height: 5vw;
@@ -194,7 +194,9 @@
   color: #999999;
   font-size: 1.2rem;
   line-height: 6vw;
-  margin-bottom: 2vw;
+  position: absolute;
+  width: 95vw;
+  bottom: 2vw;
 }
 .fa-angle-right{
   position: absolute;
@@ -222,10 +224,10 @@
 }
 .lists.listimg .list .title {
   width: 66vw;
-  height: 14vw;
   color: #333333;
   font-size: 1.5rem;
   line-height: 6vw;
+  height: 12vw;
 }
 .lists.listimg .list .note {
   width: 66vw;

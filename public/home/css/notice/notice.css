@@ -144,15 +144,20 @@
   /*height: 9.1vw;*/
 }
 .content .notices .notice .list .time {
-  margin-top: 1.4vw;
   font-size: 1.2rem;
-  margin-bottom: 1.6vw;
+  position: absolute;
+  bottom: 1.6vw;
+  width: 93%;
+}
+.content .notices .notice .list.clear .time {
+  width: 66vw;
 }
 .content .notices .notice:nth-child(1) .tab {
   color: #e82a2a;
 }
 .content .notices .notice:nth-child(1) .list {
-  /*height: 24vw;*/
+  height: 26vw;
+  position: relative;
 }
 .content .notices .notice:nth-child(1) .list .title {
   line-height: 8vw;
@@ -166,6 +171,7 @@
 .content .notices .notice:nth-child(2) .list,
 .content .notices .notice:nth-child(3) .list {
   height: 21.4vw;
+  position: relative;
 }
 .content .notices .notice:nth-child(2) .list .fl,
 .content .notices .notice:nth-child(3) .list .fl {

@@ -3,7 +3,7 @@
   font-weight: 600;
 }
 .limit_ {
-  max-height: 8.5333vw;
+  /*max-height: 8.5333vw;*/
 }
 .limit_ p {
   width: 100%;
@@ -51,6 +51,7 @@
   padding-top: 1.3333vw;
   height: 26.6666vw;
   border-bottom: 0.2666vw solid #f1f1f1;
+  position: relative;
 }
 .list .title {
   font-size: 1.4rem;
@@ -61,11 +62,13 @@
 .list .content {
   font-size: 1.3rem;
   color: #666666;
-  min-height: 9.3333vw;
+  /*min-height: 9.3333vw;*/
 }
 .list .note {
-  margin-top: 1.6vw;
   font-size: 1.2rem;
+  position: absolute;
+  bottom: 1.6vw;
+  width: 93vw;
 }
 .list .note .ing {
   color: #259b24;

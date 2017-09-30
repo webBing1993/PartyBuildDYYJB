@@ -40,6 +40,7 @@ a:active {
   height: 24vw;
   border-bottom: 0.27vw solid #f1f1f1;
   color: #666666;
+  position: relative;
 }
 .lists .list .title {
   color: #333333;
@@ -55,6 +56,9 @@ a:active {
 .lists .list .time {
   margin-top: 1.3333vw;
   font-size: 1.2rem;
+  position: absolute;
+  bottom: 4vw;
+  width: 69vw;
 }
 .lists .list .fl img {
   width: 21vw;
