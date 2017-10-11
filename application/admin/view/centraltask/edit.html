@@ -62,19 +62,19 @@
                             </div>
                             <div class="col-lg-11">
                                 <select class="form-control" name="pid">
-                                    {neq name="msg" value=""}
+                                    {eq name="msg" value=""}
                                     <option value="1">美丽村庄</option>
                                     <option value="2">美丽城镇</option>
                                     <option value="3">平安维稳</option>
                                     <option value="4">五水共治</option>
                                     <option value="5">三改一拆</option>
                                     {else /}
-                                    <option value="1">美丽村庄</option>
-                                    <option value="2">美丽城镇</option>
-                                    <option value="3">平安维稳</option>
-                                    <option value="4">五水共治</option>
-                                    <option value="5">三改一拆</option>
-                                    {/neq}
+                                    <option value="1" {eq name="$msg.pid" value="1"}selected{/eq}>美丽村庄</option>
+                                    <option value="2" {eq name="$msg.pid" value="2"}selected{/eq}>美丽城镇</option>
+                                    <option value="3" {eq name="$msg.pid" value="3"}selected{/eq}>平安维稳</option>
+                                    <option value="4" {eq name="$msg.pid" value="4"}selected{/eq}>五水共治</option>
+                                    <option value="5" {eq name="$msg.pid" value="5"}selected{/eq}>三改一拆</option>
+                                    {/eq}
                                 </select>
                             </div>
                         </div>
