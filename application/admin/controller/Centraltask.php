@@ -47,8 +47,6 @@ class Centraltask extends Admin {
             }
             if(!empty($data['time'])) {
                 $data['time'] = strtotime($data['time']);
-            }else {
-                $data['time'] = 0;
             }
             $Model = new CentraltaskModel();
             if($data['type'] == 1) {

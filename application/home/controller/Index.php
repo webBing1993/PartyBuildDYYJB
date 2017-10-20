@@ -34,12 +34,12 @@ class Index extends Base {
     public function moreDataList()
     {
         $len = input('length');
-        $res = Db::field('title,create_time,publisher,id,front_cover,class_type,type')
+        $res = Db::field('title,create_time,publisher,id,front_cover,class_type,type,recommend')
             ->table('pb_notice')
-            ->where('type!=1 and status>=0') // notice type1 没有发布人
-            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type FROM pb_learn")
-            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,collect as type FROM pb_news")
-            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type FROM pb_centraltask where status>=0 order by create_time desc limit $len,7")
+            ->where('type!=1 and status>=0 and recommend=1') // notice type1 没有发布人
+            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type,recommend FROM pb_learn where type!=1 and status>=0 and recommend=1")
+            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,collect as type,recommend FROM pb_news where status>=0 and recommend=1")
+            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type,1 recommend FROM pb_centraltask where type!=1 and status>=0  order by create_time desc limit $len,7")
             ->select();
 
         foreach ($res as $k=>$v) {

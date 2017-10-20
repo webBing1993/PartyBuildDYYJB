@@ -88,7 +88,9 @@ class Notice extends Admin {
             $data['create_user'] = $_SESSION['think']['user_auth']['id'];
             $noticeModel = new NoticeModel();
 //            $data['carousel_images'] = json_encode($data['carousel_images']);  //将数组转为字符串存入数据库，用到时解码
-            $data['start_time'] = strtotime($data['start_time']);
+            if(!empty($data['start_time'])) {
+                $data['start_time'] = strtotime($data['start_time']);
+            }
 //            $data['end_time'] = strtotime($data['end_time']);
             $id = $noticeModel->validate('Notice.act')->save($data);
             if($id){
@@ -118,7 +120,9 @@ class Notice extends Admin {
             $data['create_user'] = $_SESSION['think']['user_auth']['id'];
             $noticeModel = new NoticeModel();
 //            $data['carousel_images'] = json_encode($data['carousel_images']);  //将数组转为字符串存入数据库，用到时解码
-            $data['start_time'] = strtotime($data['start_time']);
+            if(!empty($data['start_time'])) {
+                $data['start_time'] = strtotime($data['start_time']);
+            }
 //            $data['end_time'] = strtotime($data['end_time']);
             $id = $noticeModel->validate('Notice.act')->save($data,['id'=>input('id')]);
             if($id){
