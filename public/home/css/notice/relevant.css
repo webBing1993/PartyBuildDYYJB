@@ -171,6 +171,7 @@
 .comment .lists .list .isgood {
   background-size: 4vw 4vw;
   padding-left: 4.8vw;
+  line-height: 5vw;
 }
 .comment .tip {
   height: 10.6666vw;

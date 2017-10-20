@@ -119,7 +119,7 @@ html,body{
     margin-top:2vw;
 }
 .content .notices .notice .list {
-    height: 22vw;
+    height: 24vw;
 }
 .content .notices .notice .list {
     display: block;
@@ -132,7 +132,7 @@ html,body{
 }
 .content .notices .notice .list .fl img {
     width: 21.3vw;
-    height: 16vw;
+    height: 18vw;
     margin-top: 3vw;
 }
 .content .notices .notice .list .fl .type {
@@ -146,7 +146,7 @@ html,body{
 }
 .content .notices .notice .list .right {
     width: 69vw;
-    height: 16vw;
+    height: 18vw;
     margin-top: 3vw;
     margin-left: 3vw;
     position: relative;

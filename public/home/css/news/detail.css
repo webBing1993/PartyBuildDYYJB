@@ -177,16 +177,17 @@
   color: #999999;
 }
 .comment .lists .list .good {
-  background: url('/home/images/detail/good.png') 0 2px no-repeat;
+  background: url('/home/images/detail/good.png') 0 .54vw no-repeat;
 }
 .comment .lists .list .good_ {
   animation: shake 300ms ease;
   -webkit-animation: shake 300ms ease;
-  background: url('/home/images/detail/good_.png') 0 2px no-repeat;
+  background: url('/home/images/detail/good_.png') 0 .54vw no-repeat;
 }
 .comment .lists .list .isgood {
   background-size: 4vw 4vw;
   padding-left: 4.8vw;
+  line-height: 5vw;
 }
 .comment .tip {
   height: 10.7vw;
