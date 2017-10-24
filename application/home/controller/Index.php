@@ -39,7 +39,7 @@ class Index extends Base {
             ->where('type!=1 and status>=0 and recommend=1') // notice type1 没有发布人
             ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type,recommend FROM pb_learn where type!=1 and status>=0 and recommend=1")
             ->union("SELECT title,create_time,publisher,id,front_cover,class_type,collect as type,recommend FROM pb_news where status>=0 and recommend=1")
-            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type,1 recommend FROM pb_centraltask where status>=0  order by create_time desc limit $len,7")
+            ->union("SELECT title,create_time,publisher,id,front_cover,class_type,type,1 recommend FROM pb_centraltask where type!=1 and status>=0  order by create_time desc limit $len,7")
             ->select();
 
         foreach ($res as $k=>$v) {
